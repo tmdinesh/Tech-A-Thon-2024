@@ -1,0 +1,25 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.chat-box {
+    max-width: 500px;
+    margin: auto;
+}
+
+#chat-area {
+    height: 300px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+input, button {
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}

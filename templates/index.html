@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #chatbox {
+            background: #fff;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        .message {
+            padding: 10px;
+            background: #eee;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatbox">
+        <div id="messages"></div>
+        <input type="text" id="userInput" placeholder="Type a message..." onkeydown="if (event.keyCode == 13) {sendMessage()}">
+    </div>
+
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("userInput").value;
+            var messageDiv = document.createElement("div");
+            messageDiv.className = "message";
+            messageDiv.textContent = "You: " + userInput;
+            document.getElementById("messages").appendChild(messageDiv);
+
+            fetch(`/get?msg=${userInput}`)
+                .then(response => response.text())
+                .then(response => {
+                    var botResponse = document.createElement("div");
+                    botResponse.className = "message";
+                    botResponse.textContent = "Bot: " + response;
+                    document.getElementById("messages").appendChild(botResponse);
+                });
+
+            fetch(`/get_sentiment?msg=${userInput}`)
+                .then(response => response.text())
+                .then(response => {
+                    var sentimentResponse = document.createElement("div");
+                    sentimentResponse.className = "message";
+                    sentimentResponse.textContent = response;
+                    document.getElementById("messages").appendChild(sentimentResponse);
+                });
+
+            document.getElementById("userInput").value = "";
+        }
+    </script>
+</body>
+</html>
