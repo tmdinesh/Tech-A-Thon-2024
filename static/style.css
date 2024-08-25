@@ -1,25 +1,109 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-.chat-box {
-    max-width: 500px;
-    margin: auto;
+.container {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
-#chat-area {
-    height: 300px;
-    overflow-y: auto;
-    background: #f9f9f9;
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+#chatbox {
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+    border-radius: 8px;
+}
+
+#messages {
+    display: flex;
+    flex-direction: column;
+}
+
+#messages .user-message,
+#messages .bot-message {
+    max-width: 80%;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 18px;
+    word-wrap: break-word;
+}
+
+#messages .user-message {
+    align-self: flex-end;
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+#messages .bot-message {
+    align-self: flex-start;
+    background-color: #e8e8e8;
+    color: #333333;
+}
+
+#input-section {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    width: 100%;
+    height: 60px;
     padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-
-input, button {
-    outline: none;
+    border-radius: 8px;
+    border: 1px solid #cccccc;
+    margin-bottom: 10px;
+    resize: none;
+    font-size: 16px;
 }
 
 button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    background-color: #2ecc71;
     cursor: pointer;
+    margin-top: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+#record-button {
+    background-color: #e74c3c;
+}
+
+#record-button:hover {
+    background-color: #c0392b;
+}
+
+#record-button.recording {
+    background-color: #f39c12;
+}
+
+#record-button.recording:hover {
+    background-color: #d35400;
 }
